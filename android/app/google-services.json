@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "141399113600",
+    "project_id": "rncnchat",
+    "storage_bucket": "rncnchat.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:141399113600:android:caf9fda3e99e38bd3f8b65",
+        "android_client_info": {
+          "package_name": "com.andisofyan"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "141399113600-u937onkngne89jo8rq3r81cvq6ignkgf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.andisofyan",
+            "certificate_hash": "36a972f778af20a77219906de9ded790d9e3881b"
+          }
+        },
+        {
+          "client_id": "141399113600-igias83h9p0d93ti5ne7n98veo6fp3ja.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDUQFor5BavbEfwz3dgEMRMOUDMaRuJF8o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "141399113600-igias83h9p0d93ti5ne7n98veo6fp3ja.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
