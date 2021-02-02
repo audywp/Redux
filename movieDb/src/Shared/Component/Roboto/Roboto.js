@@ -21,7 +21,7 @@ function Roboto({
     textStyle: {
       fontFamily: `Roboto-${type}`,
       fontSize: moderateScale(size),
-      color: theme ? 'white' : 'black',
+      color: color,
       ...style,
     },
   });

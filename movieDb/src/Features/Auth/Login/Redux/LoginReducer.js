@@ -1,4 +1,4 @@
-import {LOGIN, SET_TOKEN, REMOVE_PASSWORD, SET_MENU} from './Action';
+import {LOGIN, SET_TOKEN, REMOVE_PASSWORD, SET_MENU, LOG_OUT} from './Action';
 
 const intialState = {
   email: '',
@@ -33,6 +33,13 @@ export const LoginReducer = (state = intialState, action) => {
       return {
         ...state,
         password: null,
+      };
+
+    case LOG_OUT:
+      return {
+        ...state,
+        isLogged: false,
+        token: '',
       };
 
     default:

@@ -8,7 +8,7 @@ import {Color} from './src/Shared/Style/Color';
 
 export default function Root() {
   const MyTheme = {
-    dark: true,
+    dark: false,
     colors: {
       primary: Color.darkBlue,
       background: '#000',

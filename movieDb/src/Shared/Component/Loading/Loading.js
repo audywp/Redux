@@ -7,7 +7,7 @@ export default function Loading() {
   return (
     <View
       style={[GlobalStyles('center', 'center').container, GlobalStyles().flex]}>
-      <ActivityIndicator size={moderateScale(30)} color="blue" />
+      <ActivityIndicator size={moderateScale(30)} color="white" />
     </View>
   );
 }

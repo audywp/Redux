@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 export const Navigator = ({navigation, route}) => {
   const {isLogged} = Store.getState().LoginReducer;
   return (
-    <Stack.Navigator initialRouteName="Auth">
+    <Stack.Navigator initialRouteName={isLogged ? 'Main' : 'Auth'}>
       <Stack.Screen
         component={AuthRouter}
         name="Auth"

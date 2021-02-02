@@ -13,7 +13,7 @@ function* getSagaGenres({payload}) {
 
   try {
     const result = yield axios.get(
-      `https://api.themoviedb.org/3/genre/movie/list?api_key=781eb13279207d3b00115859616b4710$`,
+      `https://api.themoviedb.org/3/genre/movie/list?api_key=781eb13279207d3b00115859616b4710`,
     );
     yield put(setListGenres(result.data.genres.slice(0, 10)));
   } catch (error) {

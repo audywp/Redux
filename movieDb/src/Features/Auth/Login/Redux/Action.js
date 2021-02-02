@@ -1,6 +1,7 @@
 export const LOGIN = 'LOGIN';
 export const SET_TOKEN = 'SET_TOKEN';
 export const REMOVE_PASSWORD = 'REMOVE_PASSWORD';
+export const LOG_OUT = 'LOG_OUT';
 
 export const ActionLogin = (payload) => {
   return {
@@ -20,5 +21,11 @@ export const SetToken = (token) => {
 export const RemoveCredentials = () => {
   return {
     type: REMOVE_PASSWORD,
+  };
+};
+
+export const logOut = () => {
+  return {
+    type: LOG_OUT,
   };
 };

@@ -10,9 +10,11 @@ import {getListMenu} from './Redux/Action';
 import {SearchBar} from 'react-native-elements';
 import {HomeStyles} from './style';
 import Roboto from '../../../Shared/Component/Roboto/Roboto';
-import {SmallCard} from '../../../Shared/Component/Card/Card';
+import {BigCard, SmallCard} from '../../../Shared/Component/Card/Card';
 import {connect} from 'react-redux';
 import {changeEmail, getGenres} from './Redux/Action';
+import {logOut} from '../../Auth/Login/Redux/Action';
+import Button from '../../../Shared/Component/Button';
 
 function Home(props) {
   console.log(props, 'props from home');
@@ -20,6 +22,7 @@ function Home(props) {
   const [offset, setOffset] = useState(0);
   const [refreshing, setRefreshing] = useState(false);
   const [search, setSearch] = useState('');
+  const [active, setAactive] = useState(false);
 
   const updateSearch = (search) => {
     console.log(search);
@@ -32,6 +35,15 @@ function Home(props) {
 
   const updateEmail = (Email) => {
     props.changeEmail(Email);
+  };
+
+  const expand = () => {
+    setAactive(!active);
+  };
+
+  const LogOut = () => {
+    props.logOut();
+    props.navigation.navigate('Auth');
   };
 
   return (
@@ -65,7 +77,19 @@ function Home(props) {
             }}
           />
         </View>
-        <Text style={{color: 'white'}}>{props.email}</Text>
+        <BigCard
+          title="Wonder Woman 1984 "
+          desc="Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah."
+          genre="Thriller"
+          image="https://image.tmdb.org/t/p/w500/srYya1ZlI97Au4jUYAktDe3avyA.jpg"
+          poster="https://image.tmdb.org/t/p/w500/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg"
+          year="1991"
+          totalMessage={121}
+          active={active}
+          onPress={expand}
+        />
+
+        <Button onPress={LogOut} title="Logout" />
       </ScrollView>
     </>
   );
@@ -82,6 +106,7 @@ const mapDispatchToProps = {
   getListMenu,
   changeEmail,
   getGenres,
+  logOut,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

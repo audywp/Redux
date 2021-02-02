@@ -1,5 +1,11 @@
 import React, {useState, useEffect} from 'react';
-import {View, Text, ScrollView, TextInput} from 'react-native';
+import {
+  View,
+  Text,
+  ScrollView,
+  TextInput,
+  ActivityIndicator,
+} from 'react-native';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 import Button from '../../../Shared/Component/Button';
 import {GlobalStyles} from '../../../Shared/Style/GlobalStyle';
@@ -31,58 +37,66 @@ function Login(props) {
   };
 
   const loginAction = () => {
-    navigation.navigate('Main');
+    props.ActionLogin({
+      email,
+      password,
+    });
   };
 
   return (
     <>
-      <ScrollView
-        contentContainerStyle={[GlobalStyles().flex]}
-        style={GlobalStyles().paddingHorizontal}>
-        {/* top Comp */}
+      {props.isLoading ? (
+        <Loading />
+      ) : (
+        <ScrollView
+          contentContainerStyle={[GlobalStyles().flex]}
+          style={GlobalStyles().paddingHorizontal}>
+          {/* top Comp */}
 
-        <View style={[GlobalStyles().flex, GlobalStyles().container]}>
-          <FastImage
-            source={require('../../../Assets/images/logo.png')}
-            style={LoginStyles.image}
-          />
-          <Roboto title="Movie Review" />
-        </View>
-        {/* Center Comp */}
-        <View style={[GlobalStyles().flex, GlobalStyles().container]}>
-          <View>
-            <TextInput
-              onChangeText={(text) => validateUsername(text)}
-              placeholder="Username"
-              placeholderTextColor="white"
-              style={LoginStyles.textInput}
+          <View style={[GlobalStyles().flex, GlobalStyles().container]}>
+            <FastImage
+              source={require('../../../Assets/images/logo.png')}
+              style={LoginStyles.image}
             />
+            <Roboto title="Movie Review" />
           </View>
-          <View>
-            <TextInput
-              onChangeText={(text) => validatePassword(text)}
-              placeholder="Password"
-              placeholderTextColor="white"
-              style={LoginStyles.textInput}
-              secureTextEntry={true}
-            />
+          {/* Center Comp */}
+          <View style={[GlobalStyles().flex, GlobalStyles().container]}>
+            <View>
+              <TextInput
+                onChangeText={(text) => validateUsername(text)}
+                placeholder="Username"
+                placeholderTextColor="white"
+                style={LoginStyles.textInput}
+              />
+            </View>
+            <View>
+              <TextInput
+                onChangeText={(text) => validatePassword(text)}
+                placeholder="Password"
+                placeholderTextColor="white"
+                style={LoginStyles.textInput}
+                secureTextEntry={true}
+              />
+            </View>
+            <View style={LoginStyles.forgotPassword}>
+              <Roboto title="Forgot Password ?" />
+            </View>
           </View>
-          <View style={LoginStyles.forgotPassword}>
-            <Roboto title="Forgot Password ?" />
+          {/* Bottom Comp */}
+          <View
+            style={[GlobalStyles().flex, GlobalStyles('flex-start').container]}>
+            <Button onPress={loginAction} title="Login" />
+
+            <View style={AuthStyle.Conditions}>
+              <Roboto title="Don't have an account ?" />
+              <TouchableOpacity onPress={moveToRegister}>
+                <Roboto title=" Register" />
+              </TouchableOpacity>
+            </View>
           </View>
-        </View>
-        {/* Bottom Comp */}
-        <View
-          style={[GlobalStyles().flex, GlobalStyles('flex-start').container]}>
-          <Button onPress={loginAction} title="Login" />
-          <View style={AuthStyle.Conditions}>
-            <Roboto title="Don't have an account ?" />
-            <TouchableOpacity onPress={moveToRegister}>
-              <Roboto title=" Register" />
-            </TouchableOpacity>
-          </View>
-        </View>
-      </ScrollView>
+        </ScrollView>
+      )}
     </>
   );
 }
