@@ -14,7 +14,7 @@ export const GlobalStyles = (
       alignItems: AlignItems,
     },
     paddingHorizontal: {
-      paddingHorizontal: widthPercentageToDP(4),
+      paddingHorizontal: widthPercentageToDP(6),
     },
   });
 };

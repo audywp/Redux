@@ -13,13 +13,18 @@ const persistConfig = {
 
 const SagaMiddleware = createSagaMiddleware();
 
+const allMiddleware = applyMiddleware(SagaMiddleware, logger);
+
 const persistedReducer = persistReducer(persistConfig, AllReducer);
 
-export const Store = createStore(
-  persistedReducer,
-  applyMiddleware(SagaMiddleware, logger),
-);
+export const Store = createStore(persistedReducer, allMiddleware);
 
 export const Persistor = persistStore(Store);
 
 SagaMiddleware.run(SagaWatcher);
+
+// React native init
+// Create Your Structure Folder
+// Create a reducer
+// combine reducer
+// Crate Store config

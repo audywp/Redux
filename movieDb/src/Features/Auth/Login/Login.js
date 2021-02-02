@@ -8,6 +8,10 @@ import {ActionLogin, getListMenu} from './Redux/Action';
 import {connect} from 'react-redux';
 import Loading from '../../../Shared/Component/Loading/Loading';
 import {setLoading} from '../../../Store/GlobalAction';
+import FastImage from 'react-native-fast-image';
+import {AuthStyle} from '../style';
+import {LoginStyles} from './style';
+import Roboto from '../../../Shared/Component/Roboto/Roboto';
 
 function Login(props) {
   const {navigation} = props;
@@ -27,47 +31,58 @@ function Login(props) {
   };
 
   const loginAction = () => {
-    props.ActionLogin({
-      email,
-      password,
-    });
+    navigation.navigate('Main');
   };
 
   return (
     <>
-      {props.isLoading ? (
-        <Loading />
-      ) : (
-        <ScrollView style={[GlobalStyles().flex]}>
-          {/* top Comp */}
+      <ScrollView
+        contentContainerStyle={[GlobalStyles().flex]}
+        style={GlobalStyles().paddingHorizontal}>
+        {/* top Comp */}
 
-          <View style={GlobalStyles().flex}>
-            <Text>RN Class</Text>
+        <View style={[GlobalStyles().flex, GlobalStyles().container]}>
+          <FastImage
+            source={require('../../../Assets/images/logo.png')}
+            style={LoginStyles.image}
+          />
+          <Roboto title="Movie Review" />
+        </View>
+        {/* Center Comp */}
+        <View style={[GlobalStyles().flex, GlobalStyles().container]}>
+          <View>
+            <TextInput
+              onChangeText={(text) => validateUsername(text)}
+              placeholder="Username"
+              placeholderTextColor="white"
+              style={LoginStyles.textInput}
+            />
           </View>
-          {/* Center Comp */}
-          <View style={[GlobalStyles().flex, GlobalStyles().container]}>
-            <View>
-              <TextInput
-                onChangeText={(text) => validateUsername(text)}
-                placeholder="Username"
-              />
-            </View>
-            <View>
-              <TextInput
-                onChangeText={(text) => validatePassword(text)}
-                placeholder="Password"
-              />
-            </View>
-            <Button onPress={loginAction} title="Login" />
-            <TouchableOpacity
-              onPress={moveToRegister}
-              style={{marginTop: moderateScale(20)}}>
-              <Text>Register</Text>
+          <View>
+            <TextInput
+              onChangeText={(text) => validatePassword(text)}
+              placeholder="Password"
+              placeholderTextColor="white"
+              style={LoginStyles.textInput}
+              secureTextEntry={true}
+            />
+          </View>
+          <View style={LoginStyles.forgotPassword}>
+            <Roboto title="Forgot Password ?" />
+          </View>
+        </View>
+        {/* Bottom Comp */}
+        <View
+          style={[GlobalStyles().flex, GlobalStyles('flex-start').container]}>
+          <Button onPress={loginAction} title="Login" />
+          <View style={AuthStyle.Conditions}>
+            <Roboto title="Don't have an account ?" />
+            <TouchableOpacity onPress={moveToRegister}>
+              <Roboto title=" Register" />
             </TouchableOpacity>
           </View>
-          {/* Bottom Comp */}
-        </ScrollView>
-      )}
+        </View>
+      </ScrollView>
     </>
   );
 }

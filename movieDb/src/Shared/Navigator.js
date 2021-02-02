@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-
+import {View} from 'react-native';
 // router
 import {AuthRouter} from '../Features/Auth/AuthRouter';
 import {MainRouter} from '../Features/MainScreens/MainNavigator';
@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 export const Navigator = ({navigation, route}) => {
   const {isLogged} = Store.getState().LoginReducer;
   return (
-    <Stack.Navigator initialRouteName={isLogged ? 'Main' : 'Auth'}>
+    <Stack.Navigator initialRouteName="Auth">
       <Stack.Screen
         component={AuthRouter}
         name="Auth"
